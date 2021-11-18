@@ -26,8 +26,15 @@
     import HighestTradingValue from './algorithms/HighestTradingValue.js'
     import BestTimeToSellAndBuy from './algorithms/BestTimeToSellAndBuy.js'
 
-    document.getElementById("data_range_form").addEventListener("submit", function (e) {
+    document.getElementById("data_range_form").addEventListener("submit", (e) => {
         e.preventDefault();
+        const start_date = Date.parse(e.target.start_date.value) / 1000;
+        const end_date = Date.parse(e.target.end_date.value) / 1000;
+        const url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${start_date}&to=${end_date}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => console.log(data))
     })
 
 </script>
