@@ -1,5 +1,5 @@
 const HighestTradingVolume = () => {
-    return "dummy data";
+    return null;
 }
 
 export default HighestTradingVolume;
