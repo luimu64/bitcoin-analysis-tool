@@ -22,29 +22,36 @@
 </body>
 
 <script type="module">
-    import LongestDownwardTrend from './algorithms/LongestDownwardTrend.js'
-    import HighestTradingVolume from './algorithms/HighestTradingVolume.js'
-    import BestTimeToSellAndBuy from './algorithms/BestTimeToSellAndBuy.js'
+    import LongestDownwardTrend from './algorithms/LongestDownwardTrend.js';
+    import HighestTradingVolume from './algorithms/HighestTradingVolume.js';
+    import BestTimeToSellAndBuy from './algorithms/BestTimeToSellAndBuy.js';
+    import { getDayPrices } from './algorithms/Utility.js';
+    import { DateTime } from './lib/luxon.min.js';
 
     const resultsContainer = document.getElementById("data_range_results");
 
     document.getElementById("data_range_form").addEventListener("submit", (e) => {
         e.preventDefault();
-        const start_date = Date.parse(e.target.start_date.value) / 1000;
-        const end_date = Date.parse(e.target.end_date.value) / 1000;
-        const url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${start_date}&to=${end_date}`;
+        const start_date = DateTime.fromFormat(e.target.start_date.value, "yyyy-MM-dd");
+        const end_date = DateTime.fromFormat(e.target.end_date.value, "yyyy-MM-dd");
+        const start_timestamp = start_date.toMillis() / 1000;
+        const end_timestamp = (end_date.toMillis() + 3600000) / 1000;
+        const url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${start_timestamp}&to=${end_timestamp}`;
 
         fetch(url)
             .then(response => response.json())
             .then(data => {
+                console.log(getDayPrices(data.prices, start_date, end_date));
+                /*
                 resultsContainer.innerHTML = `
                     <h3>Longest bearish trend</h3>
-                    <p>${LongestDownwardTrend(data.prices)}</p>
+                    <p>${console.log(LongestDownwardTrend(data.prices))}</p>
                     <h3>Highest trading volume</h3>
                     <p>${HighestTradingVolume(data.total_volumes)}</p>
                     <h3>Best time to sell and buy</h3>
                     <p>${BestTimeToSellAndBuy(data)}</p>
                 `;
+                */
             })
     })
 
