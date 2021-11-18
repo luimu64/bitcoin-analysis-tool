@@ -22,10 +22,7 @@
 </body>
 
 <script type="module">
-    import LongestDownwardTrend from './algorithms/LongestDownwardTrend.js';
-    import HighestTradingVolume from './algorithms/HighestTradingVolume.js';
-    import BestTimeToSellAndBuy from './algorithms/BestTimeToSellAndBuy.js';
-    import { getDayPrices } from './algorithms/Utility.js';
+    import { getDayPrices, renderResults } from './lib/Utility.js';
     import { DateTime } from './lib/luxon.min.js';
 
     const resultsContainer = document.getElementById("data_range_results");
@@ -40,20 +37,7 @@
 
         fetch(url)
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                console.log(getDayPrices(data.prices, start_date, end_date));
-                /*
-                resultsContainer.innerHTML = `
-                    <h3>Longest bearish trend</h3>
-                    <p>${console.log(LongestDownwardTrend(data.prices))}</p>
-                    <h3>Highest trading volume</h3>
-                    <p>${HighestTradingVolume(data.total_volumes)}</p>
-                    <h3>Best time to sell and buy</h3>
-                    <p>${BestTimeToSellAndBuy(data)}</p>
-                `;
-                */
-            })
+            .then(data => renderResults(data, resultsContainer, start_date, end_date));
     })
 
 </script>
