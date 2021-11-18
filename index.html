@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <base href=".">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" type="text/css">
@@ -10,7 +11,25 @@
 </head>
 
 <body>
-
+    <form id="data_range_form" onsubmit="">
+        <label>Start date</label>
+        <input type="date" name="start_date">
+        <label>End date</label>
+        <input type="date" name="end_date">
+        <input type="submit" value="Analyze">
+    </form>
+    <div id="data_range_results"></div>
 </body>
+
+<script type="module">
+    import LongestDownwardTrend from './algorithms/LongestDownwardTrend.js'
+    import HighestTradingValue from './algorithms/HighestTradingValue.js'
+    import BestTimeToSellAndBuy from './algorithms/BestTimeToSellAndBuy.js'
+
+    document.getElementById("data_range_form").addEventListener("submit", function (e) {
+        e.preventDefault();
+    })
+
+</script>
 
 </html>
