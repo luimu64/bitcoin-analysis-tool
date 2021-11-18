@@ -23,8 +23,10 @@
 
 <script type="module">
     import LongestDownwardTrend from './algorithms/LongestDownwardTrend.js'
-    import HighestTradingValue from './algorithms/HighestTradingValue.js'
+    import HighestTradingVolume from './algorithms/HighestTradingVolume.js'
     import BestTimeToSellAndBuy from './algorithms/BestTimeToSellAndBuy.js'
+
+    const resultsContainer = document.getElementById("data_range_results");
 
     document.getElementById("data_range_form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -34,7 +36,27 @@
 
         fetch(url)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                const data_points = data.prices.map(price => {
+                    return {
+                        date: price[0],
+                        value: price[1]
+                    }
+                });
+
+                const longest_downward_trend = LongestDownwardTrend(data_points);
+                const highest_trading_volume = HighestTradingVolume(data_points);
+                const best_time_to_sell_and_buy = BestTimeToSellAndBuy(data_points);
+
+                resultsContainer.innerHTML = `
+                    <h3>Longest bearish trend</h3>
+                    <p>${longest_downward_trend}</p>
+                    <h3>Highest trading volume</h3>
+                    <p>${highest_trading_volume}</p>
+                    <h3>Best time to sell and buy</h3>
+                    <p>${best_time_to_sell_and_buy}</p>
+                `;
+            })
     })
 
 </script>

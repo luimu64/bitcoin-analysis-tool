@@ -1,5 +1,5 @@
 const BestTimeToSellAndBuy = () => {
-    return null;
+    return "dummy data";
 }
 
 export default BestTimeToSellAndBuy;

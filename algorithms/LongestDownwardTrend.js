@@ -1,5 +1,5 @@
 const LongestDownwardTrend = () => {
-    return null;
+    return "dummy data";
 }
 
 export default LongestDownwardTrend;
