@@ -2,11 +2,11 @@ const LongestDownwardTrend = async (data) => {
     let highest = 0;
 
     let i = 0;
-    while (i < data.length - 1) {
+    while (i < data.length) {
         let streak = 0;
 
-        if (data[i][1] > data[i + 1][1]) {
-            while (data[i][1] > data[i + 1][1] && i < data.length - 1) {
+        if (i !== 0) {
+            while (data[i][1] > data[i - 1][1] && i < data.length) {
                 streak++;
                 i++;
             }
