@@ -1,4 +1,4 @@
-const LongestDownwardTrend = async (data) => {
+const LongestDownwardTrend = (data) => {
     let highest = 1;
     let streak = 1;
 

@@ -6,7 +6,7 @@ const compare = (a, b) => {
     return 0;
 };
 
-const HighestTradingVolume = async (data) => {
+const HighestTradingVolume = (data) => {
     const sortedByVolumes = data.sort(compare);
     const highestVolumeValue = sortedByVolumes[0].volume * sortedByVolumes[0].price;
     const time = DateTime.fromMillis(sortedByVolumes[0].date).toFormat('dd/MM/yyyy');
