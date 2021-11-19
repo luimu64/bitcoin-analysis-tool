@@ -1,16 +1,27 @@
 import { DateTime } from '../lib/luxon.min.js';
 
-const compare = (a, b) => {
-    if (a.price < b.price) return 1;
-    if (a.price > b.price) return -1;
-    return 0;
-};
-
 const BestTimeToSellAndBuy = async (data) => {
-    const sortedByPrices = [...data].sort(compare);
-    const buyTime = DateTime.fromMillis(sortedByPrices.at(-1).date).toFormat('dd/MM/yyyy');
-    const sellTime = DateTime.fromMillis(sortedByPrices.at(0).date).toFormat('dd/MM/yyyy');
-    return [buyTime, sellTime];
+    let maxDiff = data[1].price - data[0].price;
+    let buy = data[0].date;
+    let sell = data[1].date;
+
+    for (let i = 0; i < (data.length - 1); i++) {
+        for (let j = (i + 1); j < data.length; j++) {
+            if ((data[j].price - data[i].price) > maxDiff) {
+                maxDiff = data[j].price - data[i].price;
+                buy = data[i].date;
+                sell = data[j].date;
+            }
+        }
+    }
+
+    if (maxDiff <= 0) {
+        return 'Do not buy!';
+    } else {
+        const formattedBuy = DateTime.fromMillis(buy).toFormat('dd/MM/yyyy');
+        const formattedSell = DateTime.fromMillis(sell).toFormat('dd/MM/yyyy');
+        return `${formattedBuy} - ${formattedSell}`;
+    }
 }
 
 export default BestTimeToSellAndBuy;
