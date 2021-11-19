@@ -7,7 +7,7 @@ const compare = (a, b) => {
 };
 
 const HighestTradingVolume = async (data) => {
-    const sortedByVolumes = data.sort(compare);
+    let sortedByVolumes = [...data].sort(compare);
     const time = DateTime.fromMillis(sortedByVolumes[0].date).toFormat('dd/MM/yyyy');
     const volume = Math.round(sortedByVolumes[0].volume);
     return [time, volume];
