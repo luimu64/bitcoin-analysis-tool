@@ -6,10 +6,10 @@ const compare = (a, b) => {
     return 0;
 };
 
-const BestTimeToSellAndBuy = (data) => {
+const BestTimeToSellAndBuy = async (data) => {
     const sortedByPrices = data.sort(compare);
-    const buyTime = DateTime.fromMillis(sortedByPrices.pop().date).toFormat('dd/MM/yyyy');
-    const sellTime = DateTime.fromMillis(sortedByPrices.shift().date).toFormat('dd/MM/yyyy');
+    const buyTime = DateTime.fromMillis(sortedByPrices.at(-1).date).toFormat('dd/MM/yyyy');
+    const sellTime = DateTime.fromMillis(sortedByPrices.at(0).date).toFormat('dd/MM/yyyy');
     return [buyTime, sellTime];
 }
 
