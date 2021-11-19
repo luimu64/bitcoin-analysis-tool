@@ -1,19 +1,14 @@
 const LongestDownwardTrend = async (data) => {
-    let highest = 0;
+    let highest = 1;
+    let streak = 1;
 
-    let i = 0;
-    while (i < data.length) {
-        let streak = 0;
-
-        if (i !== 0) {
-            while (data[i][1] > data[i - 1][1] && i < data.length) {
-                streak++;
-                i++;
-            }
-        } else i++;
-
-        if (streak > highest) highest = streak;
+    for (let i = 1; i < (data.length - 1); i++) {
+        if (data[i].price > data[i - 1].price) {
+            streak++;
+            if (streak > highest) highest = streak;
+        } else streak = 1;
     }
+
     return highest;
 }
 
