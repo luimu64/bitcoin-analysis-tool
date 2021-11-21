@@ -1,3 +1,8 @@
+:root {
+    --primary-accent: orangered;
+    --primary-backround:#404347;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +10,11 @@
 }
 
 body {
-    background-color: rgb(62, 67, 75);
+    background: url('./assets/low-poly-grid-haikei.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,33 +28,44 @@ label, h3, p {
 #data_range_form {
     display: flex;
     flex-direction: column;
-    min-width: 15em;
+    justify-content: center;
+    align-items: center;
+    margin: 5em;
 }
 
 #data_range_form > * {
     margin: 0.3em;
     text-align: center;
     font-weight: 700;
+    width: 100%;
 }
 
 #data_range_form > input[type="date"] {
-    background-color: rgb(85, 88, 94);
+    background-color: var(--primary-backround);
     color: white;
     padding: 1em;
     border-radius: 1em;
     border-width: 0;
+    width: 100%;
 }
 
 #data_range_form > input[type="submit"] {
-    background-color: orangered;
+    background-color: var(--primary-accent);
     color: white;
     padding: 1em;
     border-radius: 1em;
     border-width: 0;
-    transition: background-color 0.2s ease-in-out;
+    transition: filter 0.2s ease-in-out;
 }
 
 #data_range_form > input[type="submit"]:hover {
-    background-color: rgba(255, 68, 0, 0.664);
-    transition: background-color 0.2s ease-in-out;
+    filter: brightness(0.8);
+    transition: filter 0.2s ease-in-out;
+}
+
+/*media query for mobile*/
+@media screen and (max-width: 640px) {
+    #data_range_form > input[type="date"] {
+        width: 100%;
+    }
 }
