@@ -1,6 +1,7 @@
 :root {
     --primary-accent: orangered;
     --primary-backround:#404347;
+    --primary-text: #fff;
 }
 
 * {
@@ -22,7 +23,7 @@ body {
 }
 
 label, h3, p {
-    color: white;
+    color: var(--primary-text);
 }
 
 #data_range_form {
@@ -42,7 +43,7 @@ label, h3, p {
 
 #data_range_form > input[type="date"] {
     background-color: var(--primary-backround);
-    color: white;
+    color: var(--primary-text);
     padding: 1em;
     border-radius: 1em;
     border-width: 0;
@@ -51,7 +52,7 @@ label, h3, p {
 
 #data_range_form > input[type="submit"] {
     background-color: var(--primary-accent);
-    color: white;
+    color:  var(--primary-text);
     padding: 1em;
     border-radius: 1em;
     border-width: 0;
@@ -79,14 +80,27 @@ label, h3, p {
 }
 
 .result_card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     margin: 0.5em;
     padding: 1em;
     background-color: var(--primary-backround);
     border-radius: 1em;
     border-width: 0;
     width: 100%;
+}
+
+.raw_data_card > table{
+    width: 100%;
+    border-collapse: collapse;
+    border-width: 0;
+}
+
+#raw_data_header {
+    text-align: center;
+    color: var(--primary-text);
+    font-weight: 700;
+}
+
+.raw_data_table td {
+    color: var(--primary-text);
 }
