@@ -20,20 +20,24 @@
         <input type="submit" value="Analyze">
     </form>
     <div id="data_range_results">
-        <h3>Longest bearish trend</h3>
-        <p>...</p>
-        <h3>Best time to buy and sell</h3>
-        <p>...</p>
-        <h3>Highest trading volume</h3>
-        <p>...</p>
+        <div class="result_card">
+            <h3>Longest bearish trend</h3>
+            <p class="result">...</p>
+        </div>
+        <div class="result_card">
+            <h3>Best time to buy and sell</h3>
+            <p class="result">...</p>
+        </div>
+        <div class="result_card">
+            <h3>Highest trading volume</h3>
+            <p class="result">...</p>
+        </div>
     </div>
 </body>
 
 <script type="module">
     import { getDailyData, renderResults } from './lib/Utility.js';
     import { DateTime } from './lib/luxon.min.js';
-
-    const resultsContainer = document.getElementById("data_range_results");
 
     document.getElementById("data_range_form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -45,7 +49,7 @@
 
         fetch(url)
             .then(response => response.json())
-            .then(data => renderResults(data, resultsContainer, start_date, end_date));
+            .then(data => renderResults(data, start_date, end_date));
     })
 
 </script>

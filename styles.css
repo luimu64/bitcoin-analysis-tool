@@ -30,7 +30,7 @@ label, h3, p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5em;
+    margin-top: 5em;
 }
 
 #data_range_form > * {
@@ -68,4 +68,25 @@ label, h3, p {
     #data_range_form > input[type="date"] {
         width: 100%;
     }
+}
+
+#data_range_results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.result_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em;
+    padding: 1em;
+    background-color: var(--primary-backround);
+    border-radius: 1em;
+    border-width: 0;
+    width: 100%;
 }
