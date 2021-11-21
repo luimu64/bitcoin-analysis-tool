@@ -11,7 +11,7 @@
 }
 
 body {
-    background: url('./assets/low-poly-grid-haikei.svg');
+    background: url('../low-poly-grid-haikei.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -101,6 +101,10 @@ label, h3, p {
     font-weight: 700;
 }
 
-.raw_data_table * {
+.raw_data_table {
+    margin-top: 1em;
+}
+
+.raw_data_table tbody > * {
     color: var(--primary-text);
 }
