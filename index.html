@@ -43,7 +43,7 @@
 </body>
 
 <script type="module">
-    import { getDailyData, renderResults } from './lib/Utility.js';
+    import main from './index.js'
     import { DateTime } from './lib/luxon.min.js';
 
     document.getElementById("data_range_form").addEventListener("submit", (e) => {
@@ -56,7 +56,7 @@
 
         fetch(url)
             .then(response => response.json())
-            .then(data => renderResults(data, start_date, end_date));
+            .then(data => main(data, start_date, end_date));
     })
 
 </script>
