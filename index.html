@@ -13,34 +13,36 @@
 </head>
 
 <body>
-    <form id="data_range_form">
-        <label>Start date</label>
-        <input type="date" name="start_date">
-        <label>End date</label>
-        <input type="date" name="end_date">
-        <button>
-            <img id="loading_icon" src="assets/loading.svg">Analyze
-        </button>
-    </form>
-    <div id="data_range_results">
-        <div class="result_card">
-            <h3>Longest bearish trend</h3>
-            <p class="result">...</p>
+    <div id="content_wrapper">
+        <form id="data_range_form">
+            <label>Start date</label>
+            <input type="date" name="start_date">
+            <label>End date</label>
+            <input type="date" name="end_date">
+            <button>
+                <img id="loading_icon" src="assets/loading.svg">Analyze
+            </button>
+        </form>
+        <div id="data_range_results">
+            <div class="result_card">
+                <h3>Longest bearish trend</h3>
+                <p class="result">...</p>
+            </div>
+            <div class="result_card">
+                <h3>Best time to buy and sell</h3>
+                <p class="result">...</p>
+            </div>
+            <div class="result_card">
+                <h3>Highest trading volume</h3>
+                <p class="result">...</p>
+            </div>
+            <details class="result_card raw_data_card">
+                <summary id="raw_data_header">Filtered and normalized data</summary>
+                <table class="result raw_data_table">
+                    <tbody></tbody>
+                </table>
+            </details>
         </div>
-        <div class="result_card">
-            <h3>Best time to buy and sell</h3>
-            <p class="result">...</p>
-        </div>
-        <div class="result_card">
-            <h3>Highest trading volume</h3>
-            <p class="result">...</p>
-        </div>
-        <details class="result_card raw_data_card">
-            <summary id="raw_data_header">Filtered and normalized data</summary>
-            <table class="result raw_data_table">
-                <tbody></tbody>
-            </table>
-        </details>
     </div>
 </body>
 

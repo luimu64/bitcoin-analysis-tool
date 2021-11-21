@@ -22,6 +22,15 @@ body {
     align-items: center;
 }
 
+#content_wrapper {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 label, h3, p {
     color: var(--primary-text);
 }
@@ -32,22 +41,22 @@ label, h3, p {
     justify-content: center;
     align-items: center;
     margin-top: 5em;
+    width: 100%;
 }
 
 #data_range_form > * {
     margin: 0.3em;
     text-align: center;
     font-weight: 700;
-    width: 100%;
 }
 
 #data_range_form > input[type="date"] {
     background-color: var(--primary-backround);
     color: var(--primary-text);
     padding: 1em;
+    width: calc(100% - 3em);
     border-radius: 1em;
     border-width: 0;
-    width: 100%;
 }
 
 #loading_icon {
@@ -84,19 +93,13 @@ label, h3, p {
     transition: filter 0.2s ease-in-out;
 }
 
-/*media query for mobile*/
-@media screen and (max-width: 640px) {
-    #data_range_form > input[type="date"] {
-        width: 100%;
-    }
-}
-
 #data_range_results {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 3em;
+    width: 100%;
 }
 
 .result_card {
@@ -106,7 +109,7 @@ label, h3, p {
     background-color: var(--primary-backround);
     border-radius: 1em;
     border-width: 0;
-    width: 100%;
+    width: calc(100% - 3em);
 }
 
 .raw_data_card > table{
