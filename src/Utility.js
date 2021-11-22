@@ -73,15 +73,6 @@ const formatDataDisplay = (data) => {
     return tableRows.join('');
 }
 
-const renderResults = (processedData) => {
-    const results = document.getElementsByClassName('result');
-
-    results[0].innerHTML = processedData.trend + ' days';
-    results[1].innerHTML = processedData.dates;
-    results[2].innerHTML = `${processedData.time} - ${processedData.volume}€`;
-    results[3].innerHTML = `${formatDataDisplay(processedData.all)}`;
-}
-
 const loading = {
     start: () => {
         document.getElementById('loading_icon').style.display = 'block';
@@ -91,4 +82,4 @@ const loading = {
     }
 }
 
-export { getDailyData, renderResults, loading };
+export { getDailyData, formatDataDisplay, loading };

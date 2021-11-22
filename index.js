@@ -1,9 +1,18 @@
 import LongestDownwardTrend from './src/algorithms/LongestDownwardTrend.js';
 import HighestTradingVolume from './src/algorithms/HighestTradingVolume.js';
 import BestTimeToSellAndBuy from './src/algorithms/BestTimeToSellAndBuy.js';
-import { getDailyData, renderResults, loading } from "./src/Utility.js";
+import { getDailyData, formatDataDisplay, loading } from "./src/Utility.js";
 import { DateTime } from './lib/luxon.min.js';
 import api from './src/Api.js';
+
+const renderResults = (processedData) => {
+    const results = document.getElementsByClassName('result');
+
+    results[0].innerHTML = processedData.trend + ' days';
+    results[1].innerHTML = processedData.dates;
+    results[2].innerHTML = `${processedData.time} - ${processedData.volume}€`;
+    results[3].innerHTML = `${formatDataDisplay(processedData.all)}`;
+}
 
 const main = async (start_date, end_date) => {
     const startDate = DateTime.fromFormat(start_date, "yyyy-MM-dd");
