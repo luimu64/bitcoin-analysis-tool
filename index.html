@@ -48,10 +48,13 @@
 
 <script type="module">
     import main from './index.js';
+    import { checkValidity } from './src/Utility.js';
 
     document.getElementById("data_range_form").addEventListener("submit", (e) => {
         e.preventDefault();
-        main(e.target.start_date.value, e.target.end_date.value);
+        const error = checkValidity(e.target);
+        if (error === undefined) main(e.target.start_date.value, e.target.end_date.value);
+        else alert(error);
     })
 
 </script>

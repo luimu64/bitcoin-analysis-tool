@@ -14,6 +14,12 @@ const renderResults = (processedData) => {
     results[3].innerHTML = `${formatDataDisplay(processedData.all)}`;
 }
 
+/*
+function that handles the whole process after pressing Analyze.
+First it initializes the date objects, then it calls the api to get the data.
+Then it calls the algorithms to process the data and finally it renders the results.
+Loading animation is shown while the data is being fetched and processed.
+*/
 const main = async (start_date, end_date) => {
     const startDate = DateTime.fromFormat(start_date, "yyyy-MM-dd");
     const endDate = DateTime.fromFormat(end_date, "yyyy-MM-dd");

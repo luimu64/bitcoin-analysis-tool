@@ -12,7 +12,6 @@ const normalizeData = (data) => {
             data.total_volumes.unshift([null, null]);
         }
     }
-    return data;
 }
 
 const getDailyData = async (data, start_date, end_date) => {
@@ -82,4 +81,15 @@ const loading = {
     }
 }
 
-export { getDailyData, formatDataDisplay, loading };
+const checkValidity = (input) => {
+    //check whether the dates are given
+    if (input.start_date.value && input.end_date.value) {
+        const start_date = DateTime.fromFormat(input.start_date.value, 'yyyy-MM-dd').toMillis();
+        const end_date = DateTime.fromFormat(input.end_date.value, 'yyyy-MM-dd').toMillis();
+        //check whether start date is same or smaller as end date, same in case of a single day
+        if (start_date < end_date || start_date === end_date) return undefined;
+        else return 'Start date has to be before end date.';
+    } else return 'Please provide both dates.';
+}
+
+export { getDailyData, formatDataDisplay, loading, checkValidity };
