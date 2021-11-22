@@ -47,20 +47,11 @@
 </body>
 
 <script type="module">
-    import main from './index.js'
-    import { DateTime } from './lib/luxon.min.js';
+    import main from './index.js';
 
     document.getElementById("data_range_form").addEventListener("submit", (e) => {
         e.preventDefault();
-        const start_date = DateTime.fromFormat(e.target.start_date.value, "yyyy-MM-dd");
-        const end_date = DateTime.fromFormat(e.target.end_date.value, "yyyy-MM-dd");
-        const start_timestamp = start_date.toMillis() / 1000;
-        const end_timestamp = end_date.plus({ hours: 1 }).toMillis() / 1000;
-        const url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${start_timestamp}&to=${end_timestamp}`;
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => main(data, start_date, end_date));
+        main(e.target.start_date.value, e.target.end_date.value);
     })
 
 </script>

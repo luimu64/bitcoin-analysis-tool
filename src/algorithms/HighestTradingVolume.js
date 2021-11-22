@@ -1,4 +1,4 @@
-import { DateTime } from '../lib/luxon.min.js';
+import { DateTime } from '../../lib/luxon.min.js';
 
 const compare = (a, b) => {
     if (a.volume < b.volume) return 1;

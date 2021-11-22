@@ -1,4 +1,4 @@
-import { DateTime } from '../lib/luxon.min.js';
+import { DateTime } from '../../lib/luxon.min.js';
 
 const BestTimeToSellAndBuy = async (data) => {
     let maxDiff = data[1].price - data[0].price;
